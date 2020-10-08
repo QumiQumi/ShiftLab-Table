@@ -1,0 +1,22 @@
+.table {
+	// background-color: aqua;
+	// border: solid 2px rebeccapurple;
+	display: grid;
+	grid-template-rows: repeat(5, 1fr);
+	padding: 5px;
+}
+.table__row,
+.table__row-header {
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+	padding: 5px;
+}
+.table__row-header {
+	background-color: #999999;
+}
+.table__row {
+	background-color: #ffffff;
+}
+.table__cell {
+	// border: solid 1px rebeccapurple;
+}

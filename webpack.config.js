@@ -1,5 +1,11 @@
 const path = require("path");
+const fs = require("fs");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+
+const PAGES_DIR = __dirname + "/src/components/";
+const PAGES = fs
+	.readdirSync(PAGES_DIR)
+	.filter((fileName) => fileName.endsWith(".pug"));
 
 module.exports = {
 	entry: { main: "./src/index.js" },
@@ -18,14 +24,33 @@ module.exports = {
 				],
 				exclude: [/node_modules/],
 			},
+			{
+				test: /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+				loader: "file-loader",
+				options: {
+					name: "[name].[ext]",
+				},
+			},
+			{
+				test: /\.pug$/,
+				loader: "pug-loader",
+			},
 		],
 	},
 	plugins: [
 		// Array of plugins to apply to build chunk
-		new HtmlWebpackPlugin({
-			template: __dirname + "/src/public/index.html",
-			inject: "body",
-		}),
+		...PAGES.map(
+			(page) =>
+				new HtmlWebpackPlugin({
+					template: `${PAGES_DIR}/${page}`,
+					filename: `./${page.replace(/\.pug/, ".html")}`,
+				})
+		),
+
+		// new HtmlWebpackPlugin({
+		// 	template: __dirname + "/src/public/index.html",
+		// 	inject: "body",
+		// }),
 	],
 	devServer: {
 		// configuration for webpack-dev-server

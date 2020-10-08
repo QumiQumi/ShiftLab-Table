@@ -1,2 +1,6 @@
 import "./style.scss";
-console.log("hello, world");
+import "./components/table/table";
+
+import "./search";
+
+console.log("index.js");
