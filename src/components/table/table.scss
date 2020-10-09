@@ -1,13 +1,11 @@
-$light-grey: rgba(0, 0, 0, 0.2);
-$grey: rgba(0, 0, 0, 0.4);
-$white: #ffffff;
+@import "../../styles/colors.scss";
 
 .table {
 	display: grid;
 	grid-template-rows: repeat(5, 1fr);
-	box-shadow: 0 4px 8px 0 $light-grey;
+	box-shadow: 0 4px 8px 0 $grey-30;
 	max-width: 1600px;
-	margin: 0 auto;
+	margin: 0 30px;
 
 	&__row,
 	&__row-header {
@@ -15,8 +13,9 @@ $white: #ffffff;
 		grid-template-columns: repeat(5, 1fr);
 	}
 	&__row-header {
-		background-color: $grey;
+		background-color: $grey-30;
 		color: $white;
+		border: solid 1px black;
 	}
 	&__row {
 		background-color: $white;
@@ -28,11 +27,11 @@ $white: #ffffff;
 	}
 	&__cell-title {
 		display: none;
-		background-color: $grey;
+		background-color: $grey-30;
 		color: $white;
 	}
 	&__cell:hover {
-		background-color: $light-grey;
+		background-color: $grey-20 !important;
 		cursor: pointer;
 		color: $white;
 		transition: 0.3s;
@@ -41,6 +40,9 @@ $white: #ffffff;
 
 @media screen and (max-width: 421px) {
 	.table {
+		box-shadow: none;
+		grid-template-rows: repeat(4, 1fr);
+
 		&__row {
 			grid-template-columns: repeat(1, 1fr);
 		}
@@ -56,7 +58,7 @@ $white: #ffffff;
 		}
 		&__row {
 			margin-bottom: 30px;
-			box-shadow: 0 4px 8px 0 $light-grey;
+			box-shadow: 0 4px 8px 0 $grey-40;
 		}
 	}
 }

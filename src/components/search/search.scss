@@ -1,0 +1,43 @@
+@import "../../styles/colors.scss";
+
+.search {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	padding: 10px;
+	&__input {
+		width: 320px;
+		display: flex;
+		justify-content: space-around;
+	}
+	&__textbox {
+		border-radius: 5px;
+		border-width: 0px;
+		box-shadow: 0 4px 8px 0 $grey-40;
+		padding: 5px;
+		outline: none;
+	}
+
+	&__button {
+		margin-left: 20px;
+		padding: 10px;
+		border-radius: 5px;
+		border-width: 0px;
+
+		background-color: $grey-30;
+		outline: none;
+		box-shadow: 0 4px 8px 0 $grey-40;
+		color: $white;
+
+		&:focus {
+			background-color: $grey-40;
+		}
+		&:active {
+			background-color: $grey-20;
+		}
+	}
+	&__count {
+		margin-top: 20px;
+	}
+}
