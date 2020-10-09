@@ -4,10 +4,14 @@ import colors from "../../styles/colors.scss";
 window.addEventListener("DOMContentLoaded", () => {
 	var textbox = document.querySelector(".search__textbox"),
 		searchForm = document.querySelector(".search"),
+		searchButton = document.querySelector(".search__button"),
 		searchCount = document.querySelector(".search__count"),
 		searchContent = document.querySelectorAll("[search]");
 
-	searchForm.addEventListener("submit", (e) => {
+	searchForm.addEventListener("submit", search);
+	searchButton.addEventListener("click", search);
+
+	function search(e) {
 		e.preventDefault();
 		var searchText = textbox.value.toUpperCase();
 
@@ -26,5 +30,5 @@ window.addEventListener("DOMContentLoaded", () => {
 				searchCount.textContent = "Ничего не найдено";
 			}
 		}
-	});
+	}
 });
