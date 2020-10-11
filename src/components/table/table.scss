@@ -1,7 +1,8 @@
 @import "../../styles/colors.scss";
-
+@use "sass:math";
 .table {
 	display: grid;
+	// grid-template-rows: repeat(6);
 	grid-template-rows: repeat(5, 1fr);
 	box-shadow: 0 4px 8px 0 $grey-30;
 	max-width: 1600px;
@@ -13,13 +14,55 @@
 		grid-template-columns: repeat(5, 1fr);
 	}
 	&__row-header {
-		background-color: $grey-30;
-		color: $white;
-		border: solid 1px black;
+		background-color: $dark-beige;
+		position: relative;
+		color: $grey;
+
+		&::before {
+			background-color: $grey-40;
+			height: 10px;
+			width: 10px;
+			box-sizing: border-box;
+			background-clip: content-box;
+			display: block;
+			content: "";
+			bottom: 0;
+			left: 50%;
+			transform: translateX(-50%) translateY(50%) rotate(45deg);
+
+			position: absolute;
+			transition: transform 0.3s ease 0.3s, padding 0.3s ease 0.1s;
+		}
+		&::after {
+			content: "";
+			position: absolute;
+			border-top: solid 1px $grey-40;
+			bottom: 0;
+			transform: scalex(0.005);
+			width: 100%;
+			display: block;
+			transition: transform 0.3s ease;
+		}
+	}
+	&:hover {
+		.table__row-header {
+			&::before {
+				padding: 10px;
+
+				transform: translateX(-50%) translateY(50%) rotate(225deg);
+				transition: transform 0.3s ease, padding 0.3s ease 0.3s;
+			}
+			&::after {
+				transition: transform 0.3s ease 0.3s;
+				transform: scale(1);
+			}
+		}
 	}
 	&__row {
-		background-color: $white;
+		background-color: $light-beige;
+		color: $grey-40;
 	}
+
 	&__cell-header,
 	&__cell,
 	&__cell-title {
@@ -27,13 +70,14 @@
 	}
 	&__cell-title {
 		display: none;
-		background-color: $grey-30;
-		color: $white;
+		background-color: $dark-beige;
+		color: $grey;
+		border-bottom: solid 1px $grey-40;
 	}
 	&__cell:hover {
-		background-color: $grey-20 !important;
+		background-color: $beige !important;
 		cursor: pointer;
-		color: $white;
+		color: $grey;
 		transition: 0.3s;
 	}
 }
